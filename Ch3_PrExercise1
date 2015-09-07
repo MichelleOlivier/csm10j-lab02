@@ -1,0 +1,69 @@
+
+package ch3_prexercise1.java;
+import java.io.*;
+import java.util.*;
+        
+/**
+ *
+ * @author Michelle
+ */
+public class Ch3_PrExercise1 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) throws FileNotFoundException {
+        Scanner inFile;
+        PrintWriter outFile;
+        String firstName, lastName;
+        String stringOnFifthLine;
+        Double lengthRectangle, widthRectangle, radiusCircle, interestRate, savingsAccountBalance, pi;
+        Integer age;
+        Double PI = 3.141592653589793;
+         
+        inFile = new Scanner(new FileReader("c:\\users\\michelle\\documents\\inData.txt"));
+        outFile = new PrintWriter("c:\\users\\michelle\\documents\\outData.txt");
+        
+        lengthRectangle = inFile.nextDouble();
+        widthRectangle = inFile.nextDouble();
+        radiusCircle = inFile.nextDouble();
+        firstName = inFile.next();
+        lastName = inFile.next();
+        age  = inFile.nextInt();
+        savingsAccountBalance = inFile.nextDouble();
+        interestRate = inFile.nextDouble();
+        stringOnFifthLine = inFile.next(); 
+        
+        outFile.println("Rectangle:");
+        outFile.println("Length = " + lengthRectangle + ", width = " 
+                + widthRectangle + ", area = " + (lengthRectangle * widthRectangle) 
+        + ", perimeter = " + (widthRectangle * 2 + lengthRectangle * 2));
+        outFile.println();
+        
+        outFile.println("Circle:");
+        outFile.println("Radius = " + radiusCircle + ", area = " + (PI * radiusCircle * radiusCircle) + ", circumference = " + (2 * PI * radiusCircle)); 
+        outFile.println();
+        
+        outFile.println("Name: " + firstName + " " + lastName + ", age: " + age);
+        outFile.println("Beginning balance = $" + savingsAccountBalance + ", interest rate = " + interestRate);
+        outFile.println("Balance at the end of the month = $" + (savingsAccountBalance * interestRate + 
+                savingsAccountBalance));
+        
+        /* Page 61 and 62 in my text was ripped out, and so I ended up looking for some code to have the program 
+                only look at the first variabale someone types into the fifth line and to initialize 'nextLetter'...etc
+        I will try to get a copy of the pages from my friend in class on Tuesday, to see the way the book suggests doing
+        this step. Again my apologies! */
+        char theLetter = stringOnFifthLine.charAt(0);
+        char nextLetter = 'a';
+        nextLetter = (char) (((nextLetter - 'a' + 1) % 26) + 'a');
+        
+        outFile.println("The character that comes after " + stringOnFifthLine + " in the ASCII set is " + String.valueOf(nextLetter).toUpperCase());
+ 
+        
+        inFile.close();
+        outFile.close();
+        
+        
+    }
+    
+}
